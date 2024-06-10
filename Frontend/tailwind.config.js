@@ -6,17 +6,33 @@ export default {
   ],
   theme: {
     extend: {
+
+       'active':'black',
+       
        colors:{
-        'extralight':'#E0FBE2',
-        'light':'#BFF6C3',
-        'dark':'#B0EBB4',
-        'extradark':'#ACE1AF',
-        'highdark':'#76d27b',
-
-
-       }
+        'light':'#fff',
+        'dark':'#000',
+        'my-nav':'#202c33',
+        'my':'#00a884',
+       },
+     
     },
   },
-  plugins: [],
+  plugins: [
+    function ({addUtilities}){
+
+      const value={
+         ".active":{
+            color:'#00a884',
+            
+            borderBottom:'1px solid #00a884'
+
+         },
+      };
+
+      addUtilities(value,[]);
+
+    }
+  ],
 }
 
