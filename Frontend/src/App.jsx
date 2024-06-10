@@ -1,25 +1,34 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import axios from 'axios'
+
+import Main from './Components/Dashboard.jsx/Main';
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import AboutUs from './Components/About/AboutUs';
+
+import Layout from './Components/Layout/Layout';
 
 function App() {
-  const [count, setCount] = useState([]);
-
  
-  useEffect(() => {
-    axios.get('/')
-      .then(response => console.log(response.data))
-       setCount(response.data)
-      .catch(error => console.error(error))
-  }
-  , [count])
 
   return (
     <>
-      <div className='h-screen w-screen bg-slate-400'>
-        <img src={reactLogo} alt="react logo" className="h-12" />
-      </div>
+
+     <BrowserRouter>
+      
+      <Routes>
+        <Route path='/' element={<Layout/>}>
+          <Route index element={<Main/>}/>
+          <Route path='about' element={<AboutUs/>}/>
+          <Route path='contact' element={<h1>Contact</h1>}/>
+          <Route path='*' element={<h1>404</h1>}/>
+            
+
+        </Route>
+        
+      </Routes>
+     </BrowserRouter>
+
+     
+
+     
     </>
   )
 }
